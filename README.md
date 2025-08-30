@@ -49,9 +49,9 @@ saucedemo-automation/
 ├── fixtures/              # Test fixtures and utilities
 │   └── test-fixtures.js   # Shared test setup and constants
 ├── tests/                 # Test specifications
-│   ├── successful-transaction.spec.js
-│   ├── ui-anomaly-handling.spec.js
-│   └── data-integrity.spec.js
+│   ├── 01-successful-transaction.spec.js
+│   ├── 02-ui-anomaly-handling.spec.js
+│   └── 03-data-integrity.spec.js
 ├── playwright.config.js   # Playwright configuration
 ├── package.json          # Project dependencies
 └── README.md            # This file
