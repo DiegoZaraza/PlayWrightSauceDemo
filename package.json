@@ -1,0 +1,23 @@
+{
+  "name": "playwrightsaucedemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoZaraza/PlayWrightSauceDemo.git"
+  },
+  "keywords": [],
+  "author": "Diego Zaraza",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DiegoZaraza/PlayWrightSauceDemo/issues"
+  },
+  "homepage": "https://github.com/DiegoZaraza/PlayWrightSauceDemo#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0"
+  }
+}
