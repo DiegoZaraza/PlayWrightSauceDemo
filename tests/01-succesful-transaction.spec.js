@@ -52,7 +52,6 @@ test.describe('Successful Transaction Validation', () => {
     
     for (const productName of productsToAdd) {
       const foundItem = checkoutItems.find(item => item.name === productName);
-      console.log(`Found item: ${JSON.parse(JSON.stringify(foundItem)).name}`);
       expect(foundItem).toBeTruthy();
     }
     

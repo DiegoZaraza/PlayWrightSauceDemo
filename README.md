@@ -34,25 +34,60 @@ npx playwright test
 - Tests use dynamic product data from the inventory page.
 - Ensure Sauce Demo credentials are configured if required.
 
-## Approach and Justification
+# Approach and Justification
 
-### Code Structure
+## Project Structure
 
-The project is organized using the Page Object Model (POM) pattern. Each page (e.g., inventory, cart, checkout) has a dedicated file in the `pages/` directory, encapsulating selectors and actions for maintainability and reusability. Test specs reside in `tests/`, and shared fixtures are in `fixtures/` for modularity.
+```
+saucedemo-automation/
+├── page-objects/           # Page Object Model implementation
+│   ├── BasePage.js        # Base class with common utilities
+│   ├── LoginPage.js       # Login functionality
+│   ├── InventoryPage.js   # Product inventory interactions
+│   ├── CartPage.js        # Shopping cart operations
+│   └── CheckoutPage.js    # Checkout process handling
+├── fixtures/              # Test fixtures and utilities
+│   └── test-fixtures.js   # Shared test setup and constants
+├── tests/                 # Test specifications
+│   ├── successful-transaction.spec.js
+│   ├── ui-anomaly-handling.spec.js
+│   └── data-integrity.spec.js
+├── playwright.config.js   # Playwright configuration
+├── package.json          # Project dependencies
+└── README.md            # This file
+```
+
+**Page Object Model (POM):** I implemented a robust POM pattern to create maintainable, reusable code:
+
+- **BasePage:** Contains common utilities like safe clicking, text parsing, and error handling that all pages inherit
+- **Specialized Pages:** Each page class focuses on its specific functionality while leveraging base utilities
+- **Fixtures:** Centralized test setup with pre-configured user sessions and constants for consistency
+
+**Benefits:**
+- **Maintainability:** Changes to UI elements require updates in only one location
+- **Reusability:** Common actions are shared across tests
+- **Readability:** Tests read like business requirements rather than technical implementations
 
 ### Element Selection Philosophy
 
-Selectors are chosen for stability and clarity, preferring data-test attributes or unique IDs when available. This minimizes test flakiness and makes the tests resilient to UI changes.
+Prioritized **data-test attributtes** for major stability
 
-### Problem Approach
+1. **First selection:** `[data-test="XXXX"]`
+2. **Secondary selection:** CSS classes `.inventory_item`
+3. **Fallback:** Text based selectors.
 
-The challenge was addressed by validating cart totals and price consistency using dynamic product data, ensuring tests adapt to changes in inventory. Edge cases, such as maximum item subtotals, are covered to ensure robustness.
+Data-test they work well as they are attributes specifically designed for testing and give more reliability in use.
+
+### Problem User Approach
+
+During the creation and execution of the project we detected problems with the user `problem_user` not only with adding different items but also with not loading the cart with the products and also with the cart page loading blank without any data, this is something that should be reviewed thoroughly to find a better way to report these anomalies from the automation process.
 
 ### Improvements
 
 With more time, I would:
 - Add visual regression tests to catch UI anomalies.
 - Integrate reporting tools for better test insights and CI/CD integration.
+- Handle of different errors and events.
 
 ## Resources
 
